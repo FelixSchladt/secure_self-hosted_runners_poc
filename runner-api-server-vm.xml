@@ -1,0 +1,32 @@
+<domain type='kvm'>
+  <name>runner-api-server</name>
+  <memory unit='KiB'>2048000</memory> <!-- 2 GB -->
+  <vcpu placement='static'>2</vcpu>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-3.1'>hvm</type>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+  </os>
+  <devices>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/runner-api-server-vm.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='/home/schlafel/Downloads/debian-12.5.0-amd64-netinst.iso'/>
+      <target dev='hdc' bus='ide'/>
+      <readonly/>
+    </disk>
+    <interface type='network'>
+      <source network='default'/>
+      <model type='virtio'/>
+    </interface>
+    <graphics type='vnc' port='-1' listen='0.0.0.0'/>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+  </devices>
+</domain>
+
