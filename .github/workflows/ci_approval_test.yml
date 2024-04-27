@@ -6,14 +6,8 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     environment:
-      name: CI-Approval
-      url: ${{ steps.deploy.outputs.url }}
+      name: ci-approval
     steps:
       - name: Run CI tasks
         run: echo "Running CI tasks like build and test"
-      - name: Deploy (example step)
-        id: deploy
-        run: echo "Deploying to staging environment"
-        # This step simulates a deployment where you might output a URL or similar
-        continue-on-error: true
 
