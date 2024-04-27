@@ -1,0 +1,13 @@
+name: CI Process
+
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+
+jobs:
+  build-and-test:
+    runs-on: self-hosted
+    if: ${{ github.event.action == 'labeled' && github.event.label.name == 'run-ci' }}
+    steps:
+      - name: Run CI tasks
+        run: echo "Approved"
