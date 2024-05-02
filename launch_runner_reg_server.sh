@@ -13,5 +13,5 @@ export GITHUB_PAT="$3"
 
 # Launch server
 echo "Starting FastAPI server..."
-uvicorn runner-registration-server:app --reload --host 127.0.0.1 --port 8000
+uvicorn runner-registration-server:app --reload --host 192.168.101.1 --port 8000
 
