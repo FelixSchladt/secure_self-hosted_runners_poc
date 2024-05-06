@@ -1,0 +1,19 @@
+name: CI Process
+
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile
+        run: gcc -o test_program test_program.c
+    
+      - name: Run program
+        run: ./test_program
